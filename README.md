@@ -43,6 +43,6 @@ paper.  These PDFs are provided only for educational use.
 A book full of practical implementations in Python (and R) is by
 [Chollet](https://www.manning.com/books/deep-learning-with-python).
 Finally, slightly old now but still regarded as the "bible" and freely
-available online is [Goodfellow et al](http://www.deeplearningbook.org/)
+available online is [Goodfellow et al](http://www.deeplearningbook.org/).
 
 
