@@ -27,4 +27,22 @@ Backprop and overfittng and vanishing gradients. JVS
 Demo: On my github for the book there are demos. I like the cart pole ...
 
 
-==
+
+
+## References and further reading
+
+The core text we will refer to is [AI
+Engines](https://jim-stone.staff.shef.ac.uk/AIEngines/), of which you
+will receive a copy.
+
+Most core papers that we mention should be available through our
+[Paperpile](https://paperpile.com/shared/pb4w0p) collection.  Click on
+the "View PDF" link below each reference to get direct access to the
+paper.  These PDFs are provided only for educational use.
+
+A book full of practical implementations in Python (and R) is by
+[Chollet](https://www.manning.com/books/deep-learning-with-python).
+Finally, slightly old now but still regarded as the "bible" and freely
+available online is [Goodfellow et al](http://www.deeplearningbook.org/)
+
+
