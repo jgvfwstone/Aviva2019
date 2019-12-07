@@ -8,8 +8,6 @@ Author: Honghe, modified by JVS, SJE, LDC.
 
 '''
 The aim of this code is to demonstrate the incapacity of the perceptron to solve the XOR problem in two dimensions.
-We will:
-- Create a class named perceptron
 '''
 
 import matplotlib.pyplot as plt
