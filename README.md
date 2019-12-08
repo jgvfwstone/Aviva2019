@@ -1,5 +1,5 @@
 # Aviva2019
-Notes for Aviva workshop
+DRAFT Notes for Aviva workshop (times not exact!)
 
 Day 1 (10th Dec)
 1pm Lunch
