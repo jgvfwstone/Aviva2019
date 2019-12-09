@@ -1,32 +1,41 @@
 # Aviva2019
-DRAFT Notes for Aviva workshop (times not exact!)
 
-Day 1 (10th Dec)
+Notes for Aviva workshop (times not exact!)
+
+
+## Day 1 (10th Dec)
+
+
 1pm Lunch
 
-2pm Inroduction: Deep Learning and AI: What it is, what it can, and cannot do. (JVS)
+2pm Introduction: Deep Learning and AI: What it is, what it can, and cannot do. (JVS)
+[slides](JVS/JVS_turingInstLec1_2019_v5.pptx.pdf)
 
-3pm Overview: From linear networks to convolutional networks. (SE)
+3pm Overview: From linear networks to convolutional networks. (SJE)
+[slides](sje/dl-sje.pdf)
 
 4pm Coffee
 
-4.30 Aviva presentations
+4:30pm Images (continued SJE) / Introduction to dimensionality
+reduction (LDC) / review of mathematical background
 
-7pm Dinner
+5:30pm end
 
-Day 2 (11th Dec)
+7pm Dinner at Caius college
+
+
+## Day 2 (11th Dec)
 
 10am Deep Learning using Gradient Descent: What it is, and how it can fail. 
 Backprop and overfittng and vanishing gradients. JVS
 
-11am Dimensionality Reduction or Reinforcement Learning (LDC). LancelotDC
+11am Dimensionality Reduction or Reinforcement Learning (LDC). 
 
 12 Lunch
 
 1pm Using Python for networks SE (plus and JVS and LDC as demonstrators). 
-Demo: On my github for the book there are demos. I like the cart pole ...
 
-
+3pm-3:30pm Wrap up / discussion of next steps.
 
 
 ## References and further reading
