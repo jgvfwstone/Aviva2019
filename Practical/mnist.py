@@ -32,7 +32,7 @@ def sigmoid(x):
         raise TypeError('Over/underflow in sigmoid function!')
     return np.divide(1, ex+1)
 
-def lancelu(x):
+def lancelu(x): #this is a relu with another threshold
     x=np.maximum(0, x)
     x=np.minimum(1000, x)
     return x
@@ -153,13 +153,13 @@ class Layer(object):
             raise TypeError('Invalid activation function!')
 
     '''
-    Reinitialise weights
+    Add perturbation to weights
     '''
     def shuffle(self):
-        epsilon =
-        rand_w = np.random.normal(size = self.dim)
+        epsilon = 0.1 #arbitrary small positive number
+        rand_w = (np.random.rand(np.prod(self.dim))-0.5)*epsilon
         self.w = self.w + rand_w.reshape(np.flip(self.dim)) #weights initialised randomly
-        self.b = self.b + np.random.normal(size = self.dim[1])  # biases initialised randomly
+        self.b = self.b + (np.random.rand(np.prod(self.dim[1]))-0.5)*epsilon  # biases initialised randomly
 
 '''
 Neural network
@@ -240,14 +240,16 @@ class Model(object):
             print('=== Epoch === %s' % epoch)
             batch_order = np.random.permutation(len(data)) #shuffles the order in which we loop over the data (len(data) is the number of train datapoints)
             batch_size = int(len(data)/batches)
+            sum_norm_grad = 0
+            c_classified =0 # counts correctly classified digits
+            total_loss =0 # counts total loss function
             for b in range(batches): #for each batch
                 grad = [None]*batch_size #initialise gradients for backprop
-                sum_norm_grad = 0
                 for l in range(len(self.NN.layers)-1, -1, -1):  # loop over layers backwards (for backprop)
                     for p in range(batch_size): #for each datapoint in batch
                         index = batch_order[b * batch_size + p]  # index of batch datapoint in overall dataset
+
                         if l == len(self.NN.layers)-1: #if last layer of neural net
-                        #if l == 1:  # if last layer of neural net
                             x = data[index]  # takes datapoint in batch
                             y = label[index]  # takes label of datapoint
                             out = self.NN.forwardpass(x)  # forwardpass through the neural net
@@ -256,6 +258,10 @@ class Model(object):
                                 raise TypeError('Non-numerical value in output of neural net!')
                             grad[p] = 2/batch_size * (out[-1] - y) # gradient of loss function (MSE) at x  -------- should be updated for more general loss functions
                             #need to check whether above is correct
+                            total_loss += np.linalg.norm(out[-1] - y) ** 2 / len(data)  # add mean squared error
+                            if np.argmax(out[-1]) == np.argmax(y):
+                                c_classified += 1  #add if digit correctly classified
+
                         '''
                         Backpropagation
                         '''
@@ -274,13 +280,20 @@ class Model(object):
                     new_weights = self.NN.layers[l].weights() - self.learning_rate * sum(grad) #gradient descent step for weights
                     self.NN.layers[l].set_weights(new_weights)  # set new weights
 
-                sum_norm_grad += np.linalg.norm(sum(grad)) #takes sum of gradient norm over all batches
+                # takes sum of gradient norm over all batches
+                sum_norm_grad += np.linalg.norm(sum(grad))
+
             print('--- Sum norm grad --- %s' % sum_norm_grad) # reports sum of gradient norm over all batches
             if sum_norm_grad < 0: #Currently not used: criterion for convergence: sum of norm of gradient for all batches has norm lower than threshold
                 converged = True
-            elif sum_norm_grad ==0:
+            elif sum_norm_grad < 1.e-15: #perturb weights when gradient gets too small
                 self.NN.shuffle()
-            self.stats(data,label) # prints model accuracy statistics #can optimise this by leveraging the computations done here
+                epoch -= 1 #restarts at previous epoch
+            accuracy = c_classified / len(data)
+            print('--- Total loss --- ~ %s' % total_loss)
+            print('--- Correctly classified ---  %s' % c_classified)
+            print('--- Training accuracy --- ~ %s' % accuracy)
+            #self.stats(data,label) # prints model accuracy statistics #can optimise this by leveraging the computations done here
             self.save() #save parameters
             epoch +=1
 
@@ -340,7 +353,7 @@ class Model(object):
 MAIN
 '''
 # OPTIONAL: set random seed to get reproducible results
-seed=100 # any number works
+seed=100
 np.random.seed(seed)
 
 # Load MNIST
@@ -354,26 +367,26 @@ for i in range(len(y_train)):
     y_train[i, y_t[i]] = 1     #set each label as a vector of 10 entries (one for each digit) with one at the corresponding digit
 
 # Neural network architecture
-diml1 = np.array([784,200]) #dimension first layer (input, output)
-diml2 = np.array([200,100]) #dimension second layer
-diml3 = np.array([100,50])
-diml4 = np.array([50,10])
+diml1 = np.array([784,50]) #dimension first layer (input, output)
+diml2 = np.array([50,50]) #dimension second layer
+diml3 = np.array([50,10])
+
 
 # Create layers
-l1 = Layer(diml1, 'LanceLU') #first layer
+l1 = Layer(diml1, 'ReLU') #first layer
 l2 = Layer(diml2, 'LanceLU') #second layer
-l3 = Layer(diml3, 'LanceLU')
-l4 = Layer(diml4, 'LanceLU')
+l3 = Layer(diml3, 'Softmax')
+
 
 # Create neural network
-layers =[l1,l2,l3,l4]
+layers =[l1,l2,l3]
 NN = NeuralNetwork(layers)
 
 # Show neural network weights
 NN.show()
 
 #Specify learning rate
-r= 1
+r= 2
 
 # Create model
 M = Model(NN, 'MSE', r)
@@ -382,7 +395,7 @@ M = Model(NN, 'MSE', r)
 epochs = 100
 
 # Set number of batches for training
-batches = 200
+batches = 20
 
 # Train model
 M.train_model(x_train, y_train, epochs, batches)
