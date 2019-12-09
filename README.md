@@ -26,8 +26,8 @@ reduction (LDC) / review of mathematical background
 
 ## Day 2 (11th Dec)
 
-10am Deep Learning using Gradient Descent: What it is, and how it can fail. 
-Backprop and overfittng and vanishing gradients. JVS
+10am Backprop: how it works (and how it fails). (JVS)
+[slides](JVS/JVS_turingInstLec2_2019_v3.pdf)
 
 11am Dimensionality Reduction or Reinforcement Learning (LDC). 
 
