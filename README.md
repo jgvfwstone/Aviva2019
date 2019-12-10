@@ -19,7 +19,7 @@ Notes for Aviva workshop (times not exact!)
 4:30pm Images (continued SJE) / Introduction to dimensionality
 reduction (LDC) / review of mathematical background
 
-5:30pm end
+5:15pm end
 
 7pm Dinner at Caius college
 
