@@ -21,7 +21,9 @@ reduction (LDC) / review of mathematical background
 
 5:15pm end
 
-7pm Dinner at Caius college
+5:30pm check in Selwyn
+
+7pm Dinner at Caius college (6:30pm for drinks)
 
 
 ## Day 2 (11th Dec)
