@@ -31,7 +31,7 @@ reduction (LDC) / review of mathematical background
 10am Backprop: how it works (and how it fails). (JVS)
 [slides](JVS/JVS_turingInstLec2_2019_v3.pdf)
 
-11am Dimensionality Reduction or Reinforcement Learning (LDC). 
+11am Dimensionality Reduction  (LDC). [slides](LDC/AVIVA1.pdf)
 
 12 Lunch
 
