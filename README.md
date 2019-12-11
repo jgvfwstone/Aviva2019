@@ -35,7 +35,13 @@ reduction (LDC) / review of mathematical background
 
 12 Lunch
 
-1pm Using Python for networks SE (plus and JVS and LDC as demonstrators). 
+1pm Using Python for networks:
+
+1. No hidden layer [Practical/xor.py](Practical/xor.py).
+2. One hidden layer [bp/main.py](bp/main.py).
+3. [MNIST in Python](Practical/mnist.py)
+/ [MNIST in Keras](https://raw.githack.com/sje30/dl2019/master/mnist/mnist_bp.html)
+
 
 3pm-3:30pm Wrap up / discussion of next steps.
 
@@ -55,5 +61,6 @@ A book full of practical implementations in Python (and R) is by
 [Chollet](https://www.manning.com/books/deep-learning-with-python).
 Finally, slightly old now but still regarded as the "bible" and freely
 available online is [Goodfellow et al](http://www.deeplearningbook.org/).
+
 
 
