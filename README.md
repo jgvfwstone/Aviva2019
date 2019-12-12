@@ -42,6 +42,8 @@ reduction (LDC) / review of mathematical background
 3. [MNIST in Python](Practical/mnist.py)
 / [MNIST in Keras](https://raw.githack.com/sje30/dl2019/master/mnist/mnist_bp.html)
 
+See also
+[https://playground.tensorflow.org](https://playground.tensorflow.org)
 
 3pm-3:30pm Wrap up / discussion of next steps.
 
