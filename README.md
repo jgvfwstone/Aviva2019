@@ -1,6 +1,6 @@
 # Aviva2019
 
-Notes for Aviva workshop (times not exact!)
+Notes for Aviva workshop.  <http://bit.ly/aviva19>
 
 
 ## Day 1 (10th Dec)
